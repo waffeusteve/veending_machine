@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="garantie1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="117658fc-f68f-499c-ab43-158569d22825">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="reportTitle" class="java.lang.String"/>
+	<field name="sousTypeGarantie" class="java.lang.String"/>
+	<field name="codeGarantie" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="echeance" class="java.util.Date"/>
+	<field name="montant" class="java.lang.Double"/>
+	<field name="codeClient" class="java.lang.String"/>
+	<field name="intituleClient" class="java.lang.String"/>
+	<field name="rang" class="java.lang.String"/>
+	<field name="deviseGarantie" class="java.lang.String"/>
+	<field name="critEcheance" class="java.lang.Object"/>
+	<field name="critMontant" class="java.lang.Object"/>
+	<field name="critAgence" class="java.lang.Object"/>
+	<field name="critGestionnaire" class="java.lang.Object"/>
+	<field name="critGarant" class="java.lang.Object"/>
+	<field name="critCode" class="java.lang.Object"/>
+	<field name="codeAgence" class="java.lang.String"/>
+	<field name="intituleAgence" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<textField>
+				<reportElement x="307" y="0" width="235" height="44" uuid="f0d20693-97c9-4691-a2a2-5711e786a4f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reportTitle}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="481" y="82" width="115" height="20" uuid="abab3918-ff96-428c-ac70-d0a7113b0de8"/>
+				<textFieldExpression><![CDATA[$F{critEcheance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="102" width="139" height="20" uuid="7f3720d9-46d5-44f7-a9cf-1cc050da127e"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Montant minimal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="102" width="61" height="20" uuid="5830229c-ce17-46ed-8c2c-ffaea605c692"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Garant :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="61" y="102" width="280" height="20" uuid="58db5518-d74f-49d6-9093-b6fd34656c6d"/>
+				<textFieldExpression><![CDATA[$F{critGarant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="481" y="102" width="115" height="20" uuid="9bd96d4e-f285-4ffb-b5bb-d5e8fd302639"/>
+				<textFieldExpression><![CDATA[$F{critMontant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="342" y="82" width="139" height="20" uuid="6bfcf841-6c74-4aec-9def-91d924c9d16f"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Date echeance minimale :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="82" width="61" height="20" uuid="a9027608-10fe-4204-bde1-e6077f48cd6d"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Agence :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="122" width="802" height="1" backcolor="#00CCFF" uuid="a61e4363-785d-41e0-acff-a50b7308d956"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="681" y="82" width="121" height="20" uuid="21a3e852-b8d7-4150-89f9-e1b738d36f19"/>
+				<textFieldExpression><![CDATA[$F{critCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="596" y="102" width="85" height="20" uuid="c54716b3-e30d-43e1-afb9-80ba61788179"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Gestionnaire]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="681" y="102" width="121" height="20" uuid="9ea81ab0-1114-4a68-b519-9446ec0ca83e"/>
+				<textFieldExpression><![CDATA[$F{critGestionnaire}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="596" y="82" width="85" height="20" uuid="63fa59cc-9f9d-4287-b680-6664fc0df49a"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Code garantie :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="62" width="161" height="20" uuid="6d7a0a24-d6d7-4f1f-aca5-dda3ec562ff4"/>
+				<textElement>
+					<font size="13" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Critères de recherche :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="802" height="1" backcolor="#00CCFF" uuid="2c406a3e-f747-4ca6-82aa-6acf011a5d16"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="-2" width="72" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="9c713036-9a40-401b-b496-6878a1bb8dfa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Code garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="363" y="-2" width="62" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="5ae5e5d5-6499-4399-b7b2-0cb4e5c80ceb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Rang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="425" y="-2" width="117" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="746a8151-b660-48ab-b14c-80eeb8916095"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Montant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="706" y="-2" width="96" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="2a626616-8532-4f5f-ad2c-505282003c59"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Echeance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="72" y="-2" width="127" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="5449d842-d58d-4b44-84c4-771c4837cc91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Agence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="199" y="-2" width="164" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="10b1068e-2198-41de-a44e-e01f27aa61d2"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="542" y="-2" width="164" height="41" forecolor="#000000" backcolor="#CCCCCC" uuid="7dbff8ed-3ffd-4813-82dc-e448c369973c"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Type garantie]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="72" height="33" uuid="5255c1f9-d8cd-44bc-9916-9d66d90302be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeGarantie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="363" y="0" width="62" height="33" uuid="e0c9ec5c-a9ba-49d9-acef-d1c2b6a0e8d4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rang}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="542" y="0" width="164" height="33" uuid="2ba6dbc2-8ea4-49eb-8734-50ab9e3008ee"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sousTypeGarantie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="706" y="0" width="96" height="33" uuid="05354b8c-e451-45d7-89ff-578d7c061548"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{echeance}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="425" y="0" width="117" height="33" forecolor="#000000" backcolor="#FFFFFF" uuid="76230d48-aaa5-4922-a5ef-8a2d73cbd62e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="0" width="164" height="33" uuid="453660b2-b7ea-4d49-bf9a-249ed50d5544"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codeClient}+" "+$F{intituleClient}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="72" y="0" width="115" height="33" uuid="874d1f65-1c38-4a02-925c-d878595831fd"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codeAgence}+" "+$F{intituleAgence}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="329" y="34" width="80" height="20" uuid="452a6fd2-9986-4dff-a293-8806c7278724"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="409" y="34" width="40" height="20" uuid="7a228486-7fd1-4425-8803-86e9ae4a0148"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="669" y="34" width="133" height="20" uuid="5a897e89-6a61-4f8a-b5ee-6faf82ad70a4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

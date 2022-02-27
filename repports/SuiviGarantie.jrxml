@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SuiviGarantie" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5402fdd6-c7a7-429e-8b9c-22e0eada711d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="Code agence" class="java.lang.String"/>
+	<field name="Code client" class="java.lang.String"/>
+	<field name="Nom client" class="java.lang.String"/>
+	<field name="Total engagement" class="java.lang.Double"/>
+	<field name="Montant garantie" class="java.lang.Double"/>
+	<field name="Echeance max engagment" class="java.sql.Timestamp"/>
+	<field name="Type garantie" class="java.lang.String"/>
+	<field name="Echeance garantie" class="java.util.Date"/>
+	<field name="Code gestionnaire" class="java.lang.String"/>
+	<field name="Devise garantie" class="java.lang.String"/>
+	<field name="Devise engagement" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement x="290" y="24" width="191" height="29" uuid="dec64439-5f7b-4cdd-bc05-5135ed4a05fa"/>
+				<textElement textAlignment="Center">
+					<font size="20" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Suivi des garanties]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="-12" y="0" width="62" height="54" uuid="2648c77a-a338-42d3-b59d-8fc571d7d989"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code agence]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="108" y="0" width="113" height="54" uuid="13e5dbff-37eb-4f17-84e5-b88a32774b4a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="221" y="0" width="110" height="54" uuid="629e50c1-28ca-48b1-b1b2-9c1d1d59830d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total engagement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="0" width="100" height="54" uuid="57d88817-cc91-438d-88a8-33ea5e3b80cb"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="431" y="0" width="100" height="54" uuid="9d4d5629-50ca-4a8a-acb6-4b8c718f15fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Echeance max engagment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="531" y="0" width="100" height="54" uuid="afcfa595-0e56-4ae6-89e7-733588509c95"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Type garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="631" y="0" width="100" height="54" uuid="22c6db63-2931-4268-b61e-2b3d04832f46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Echeance garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="731" y="0" width="78" height="54" uuid="f44d410c-937f-4a64-ad52-3f31118eab74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code gestionnaire]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="58" height="54" uuid="76db721f-c5b2-4663-8efe-22d9b818f7b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code client]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="-12" y="1" width="62" height="30" uuid="50614168-8c3d-4394-b28d-72cedf9bb504"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Code agence}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="50" y="1" width="58" height="30" uuid="27205eb0-78ed-403a-96cc-0bf1268ca495"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Code client}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="108" y="1" width="113" height="30" uuid="919d38d3-4d37-4148-8a03-dcbe5ad59106"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Nom client}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="246" y="1" width="85" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="9803e8b5-7bf1-4608-9654-723070bfa94d"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total engagement}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="355" y="1" width="76" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="da0cfc17-12d2-4c02-8911-39151fd14a36"/>
+				<textElement verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Montant garantie}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="431" y="1" width="100" height="30" forecolor="#000000" backcolor="#FFFFFF" uuid="ce1f5e23-6ce4-40db-80f5-00e196777c34"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Echeance max engagment}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="531" y="1" width="100" height="30" uuid="f092b8f1-ffb7-4eb2-ab84-c6db7cd5f6af"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Type garantie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="631" y="1" width="100" height="30" uuid="122f59f3-3a5c-4a99-9a64-a75a27546886"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Echeance garantie}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="731" y="1" width="78" height="30" uuid="15756ff8-776b-41d9-886d-06cbdf4a270f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{Code gestionnaire}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-12" y="0" width="821" height="1" uuid="b8479dd6-eed8-4888-a258-83e1b64567e1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="221" y="1" width="25" height="30" uuid="85fe173b-28c3-4b69-b7db-a24633a9825c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Devise engagement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="331" y="1" width="24" height="29" uuid="69895f3b-141b-4bb3-8e8e-c012bce72e54"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Devise garantie}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="311" y="34" width="80" height="20" uuid="14f714a4-1ae4-456a-855d-a5846912e446"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="391" y="34" width="40" height="20" uuid="147a37f8-d58c-437a-b560-29fe706a251c"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="665" y="34" width="137" height="20" uuid="02e1c1b6-47a9-4f81-a957-ece476b73985"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

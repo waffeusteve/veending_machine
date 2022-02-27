@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Liste de garantie" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoPages" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62bb7c8b-4dce-4c8f-8f2f-c57adcf8c481">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data "/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<queryString language="SQL">
+		<![CDATA[SELECT DISTINCT
+  proj_garantie.garantie_reference AS "Reference",
+  proj_garantie.code AS "Code",
+  proj_garantie.garantie_rang AS "Rang",
+  proj_garantie.garantie_date_echean AS "Echeance",
+  proj_garantie.montant AS "Montant"
+FROM
+  public.proj_garantie]]>
+	</queryString>
+	<field name="Reference" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Reference"/>
+	</field>
+	<field name="Code" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Code"/>
+	</field>
+	<field name="Rang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Rang"/>
+	</field>
+	<field name="Echeance" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="Echeance"/>
+	</field>
+	<field name="Montant" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="Montant"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="129" y="0" width="272" height="25" uuid="672ec337-d4b7-4d15-8678-aa437dfcc6fc"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Liste de Garanties]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="15" width="67" height="20" uuid="9acf6bae-7667-4c6b-bebf-5ed030e7c6e1"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reference]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="15" width="90" height="20" uuid="64c007a7-6c86-45ab-9282-9217522035c4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Echeance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="15" width="135" height="20" uuid="47ee2421-b0ef-4a66-9735-12bd5de155a2"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero de compte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="383" y="15" width="72" height="20" uuid="9c820cc7-d69d-461c-b40d-577349beb0d5"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="15" width="75" height="20" uuid="cad561e1-1965-47f2-a3aa-2894eda80802"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="15" width="100" height="20" uuid="504f9495-815c-4157-96cf-d4d489899dc0"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant garantie]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="10" width="67" height="20" uuid="b39fbc7a-933d-4b2b-be9e-9393bc40ece3"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Reference}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="10" width="72" height="20" uuid="9eeb7a7d-b6bc-479c-8ac8-680ae2a1fe00"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Rang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="10" width="90" height="20" uuid="32ac401f-9a61-464f-b751-511c7e11535b"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Echeance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="10" width="135" height="20" uuid="b285f480-b73b-4559-8dbe-9f007327d54b"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+			</textField>
+			<textField>
+				<reportElement x="73" y="10" width="75" height="20" uuid="2d7466c5-18b2-4230-82a7-6361021fcb2a"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="283" y="10" width="100" height="20" uuid="f9130091-5a5d-464c-b778-573ad2f2d753"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Montant}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="222" y="16" width="100" height="20" uuid="2be4f334-1670-48a2-a9db-9b705c717789"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

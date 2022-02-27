@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="selectedFields" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e0cc6f05-68ee-414a-819b-7b72626c88b2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="Code client" class="java.lang.String"/>
+	<field name="Nom client" class="java.lang.String"/>
+	<field name="montant engagement" class="java.lang.Double"/>
+	<field name="Montant garantie" class="java.lang.String"/>
+	<field name="Echeance" class="java.util.Date"/>
+	<field name="Montant affecte" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="192" y="45" width="168" height="34" uuid="d84b6f67-987a-4185-900b-637799c8208f"/>
+				<textElement>
+					<font size="20" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Suivi de garantie]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="786baed1-9c25-4711-a063-06b4a412625c"/>
+				<text><![CDATA[Code client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="20" uuid="fdc70e86-d839-4208-86be-1094639e895c"/>
+				<text><![CDATA[Nom client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="118" height="20" uuid="18a96f79-022a-433e-bb56-53eab6b7b0ee"/>
+				<text><![CDATA[montant engagement]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="0" width="100" height="20" uuid="7065556c-140a-4f34-9b73-26d2e10fbae9"/>
+				<text><![CDATA[Montant garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="0" width="100" height="20" uuid="cdcb5401-95d2-4094-aedd-def090943862"/>
+				<text><![CDATA[Echeance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="518" y="0" width="54" height="20" uuid="a848feca-01df-464b-9a68-907e4a57d6fa"/>
+				<text><![CDATA[Montant affecte]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="11e25921-1206-466d-ad95-4c62ffcd4300"/>
+				<textFieldExpression><![CDATA[$F{Code client}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="8ea5283e-bc24-4f9e-a902-311c083872d7"/>
+				<textFieldExpression><![CDATA[$F{Nom client}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="118" height="20" uuid="33015b0d-d54b-4a33-8e77-ce1b245b72c1"/>
+				<textFieldExpression><![CDATA[$F{montant engagement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="0" width="100" height="20" uuid="2de2ea14-d000-4b4d-8e9c-9aaf9f080921"/>
+				<textFieldExpression><![CDATA[$F{Montant garantie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="0" width="100" height="20" uuid="6dd82200-ae16-4d5b-9045-a804ada8799f"/>
+				<textFieldExpression><![CDATA[$F{Echeance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="518" y="0" width="54" height="20" uuid="70892178-c332-4fc7-98ad-10e079e8d8f9"/>
+				<textFieldExpression><![CDATA[$F{Montant affecte}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="222" y="34" width="80" height="20" uuid="7e3102e4-8e82-474e-9a86-dadfb70680fc"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="302" y="34" width="40" height="20" uuid="c78b5fb5-deb6-4b68-b231-7b117e7970ec"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

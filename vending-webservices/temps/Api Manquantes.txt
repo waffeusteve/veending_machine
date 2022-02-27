@@ -1,0 +1,5 @@
+- Devise
+- Code Utilisateur
+- Code gestionnaire
+- API creer/Lister/Modifer/ Pouvoir type compte
+- API creer/Lister/Modifer/ Pouvoir type operation

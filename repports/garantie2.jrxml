@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SuiviGarantie" language="groovy" pageWidth="1150" pageHeight="802" orientation="Landscape" columnWidth="1150" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="5402fdd6-c7a7-429e-8b9c-22e0eada711d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="181"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="87cb0957-34a5-4227-a8d3-8dafb9d26d9d">
+		<field name="Code agence" class="java.lang.String"/>
+		<field name="Code client" class="java.lang.String"/>
+		<field name="Nom client" class="java.lang.String"/>
+		<field name="Total engagement" class="java.lang.Double"/>
+		<field name="Montant garantie" class="java.lang.Double"/>
+		<field name="Echeance max engagment" class="java.sql.Timestamp"/>
+		<field name="Type garantie" class="java.lang.String"/>
+		<field name="Echeance garantie" class="java.util.Date"/>
+		<field name="Code gestionnaire" class="java.lang.String"/>
+		<field name="Devise garantie" class="java.lang.String"/>
+		<field name="Devise engagement" class="java.lang.String"/>
+	</subDataset>
+	<field name="rang" class="java.lang.String"/>
+	<field name="codeClient" class="java.lang.String"/>
+	<field name="intituleClient" class="java.lang.String"/>
+	<field name="montant" class="java.lang.Double"/>
+	<field name="dateEcheance" class="java.util.Date"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="code" class="java.lang.String"/>
+	<field name="ReportTitle" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<textField>
+				<reportElement x="429" y="15" width="366" height="60" uuid="485ff0ac-8eb4-481c-a47f-d2f4e677c181"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="20" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ReportTitle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="75" width="100" height="33" uuid="b67a3c3f-b2ac-465a-be7e-237f017b4d88"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="75" width="148" height="33" uuid="2a0891ca-5860-412e-8e05-cf82273fd8d3"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nom client]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="499" y="75" width="196" height="33" uuid="3afe838d-342a-492c-b415-1bb5a6e38591"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant garantie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="695" y="75" width="100" height="33" uuid="62df2992-8b61-4d8c-9ec5-7b91ceb5a8cd"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Echeance max engagment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="840" y="75" width="195" height="33" uuid="281feb5b-faff-4e5e-a362-c3f51e4da9d4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rang]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1035" y="75" width="114" height="33" uuid="2db547eb-7c08-4178-b30d-aaed2a3e759b"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[reference]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="75" width="144" height="33" uuid="2c86ac1e-27a5-4e81-a60a-8b52c48b105b"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[code]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="100" height="46" uuid="beaf1700-728b-4acc-847f-81a7f2ba4bc8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{codeClient}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="131" y="0" width="148" height="46" uuid="e9cd462d-34cf-4313-b73c-f81429d52290"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{intituleClient}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="499" y="0" width="196" height="46" forecolor="#000000" backcolor="#FFFFFF" uuid="860c1991-eafe-4bab-9762-d1b06696a66c"/>
+				<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montant}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="695" y="0" width="100" height="46" uuid="8c308828-1840-4b14-b114-fd4a36dbd6ff"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dateEcheance}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="840" y="0" width="195" height="46" uuid="997ae2ce-eb4a-41bc-8594-8641b9c08f12"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{rang}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1035" y="0" width="114" height="46" uuid="41740bef-0094-4e91-8e41-b1d78939718e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{reference}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="306" y="0" width="144" height="46" uuid="a0a006de-27e9-4aee-bb59-0af6b994b30f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

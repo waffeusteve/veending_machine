@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.5.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportLettreGarantie" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="039112c3-309a-4fa6-bebf-16afa6789662">
+	<property name="ireport.zoom" value="1.6500000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#EFF7FF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="New Dataset 1" uuid="e532f139-c6a6-4c29-9eab-f6ad55445ee0">
+		<parameter name="codeClient1" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+  proj_garantie.garantie_reference AS "Reference",
+  proj_garantie.code AS "Code",
+  proj_compte.compte_code_iso AS "Numero compte",
+  proj_garantie.garantie_rang AS "Rang",
+  proj_garantie.garantie_date_echean AS "Echeance",
+  proj_garantie.montant AS "Montant"
+FROM
+  public.proj_client,
+  public.proj_garantie,
+  public.proj_compte
+WHERE
+  proj_garantie.client_id = proj_client.client_id AND
+  proj_garantie.compte_id = proj_compte.compte_id AND
+  proj_client.client_code = $P{codeClient1}]]>
+		</queryString>
+		<field name="Reference" class="java.lang.String"/>
+		<field name="Code" class="java.lang.String"/>
+		<field name="Numero compte" class="java.lang.String"/>
+		<field name="Rang" class="java.lang.String"/>
+		<field name="Echeance" class="java.sql.Timestamp"/>
+		<field name="Montant" class="java.math.BigDecimal"/>
+		<group name="Reference">
+			<groupExpression><![CDATA[$F{Reference}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="CodeClient" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\waffeusteve\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+  proj_agence.agence_code AS "Code agence",
+  proj_client.client_code AS "Code client",
+  proj_client.client_libele AS "Nom client",
+  proj_contact.contact_telephone1 AS "Tel1",
+  proj_contact.contact_telephone2 AS "Tel2",
+  proj_contact.contact_fax AS fax,
+  proj_contact.contact_email AS "Email",
+  proj_contact.contact_ville AS "Ville",
+  proj_contact.contact_pays AS "Pays",
+  proj_gestionnaire.gestionnaire_code AS "Code gestionnaire",
+  proj_gestionnaire.gestionnaire_nom AS "Nom gestionnaire",
+  sum(proj_engagement.engage_montant) AS "Montant total engagement"
+FROM
+  public.proj_contact,
+  public.proj_client,
+  public.proj_agence,
+  public.proj_gestionnaire,
+  public.proj_engagement,
+  public.proj_garantie
+WHERE
+  proj_contact.contact_id = proj_client.contact_id AND
+  proj_client.agence_id = proj_agence.agence_id AND
+  proj_client.gestionnaire_id = proj_gestionnaire.gestionnaire_id AND
+  proj_engagement.client_id = proj_client.client_id AND
+  proj_garantie.client_id = proj_client.client_id AND
+  proj_client.client_code = $P{CodeClient}
+
+GROUP BY
+  proj_agence.agence_code,proj_client.client_code,proj_client.client_libele,proj_contact.contact_telephone1,proj_contact.contact_telephone2,proj_contact.contact_fax,
+  proj_contact.contact_email,proj_contact.contact_ville,proj_contact.contact_pays, proj_gestionnaire.gestionnaire_code,proj_gestionnaire.gestionnaire_nom]]>
+	</queryString>
+	<field name="Numero" class="java.lang.String"/>
+	<field name="Date emmission" class="java.util.Date"/>
+	<field name="Date echeance" class="java.util.Date"/>
+	<field name="Montant" class="java.lang.Double"/>
+	<field name="Duree en jours" class="java.lang.Integer"/>
+	<field name="Nom client" class="java.lang.String"/>
+	<field name="Nom gestionnaire" class="java.lang.String"/>
+	<field name="Code client" class="java.lang.String"/>
+	<field name="Code gestionnaire" class="java.lang.String"/>
+	<field name="Compte garantie" class="java.lang.String"/>
+	<field name="Montant caution" class="java.lang.Double"/>
+	<field name="tel_1 client" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="tel_2 client" class="java.lang.String"/>
+	<field name="Email client" class="java.lang.String"/>
+	<field name="Ville client" class="java.lang.String"/>
+	<field name="Code agence" class="java.lang.String"/>
+	<field name="Devise" class="java.lang.String"/>
+	<variable name="TotalEngagement" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Montant total engagement}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="191" height="69" uuid="a8e22e88-6d63-49cf-acf2-23295e01d809"/>
+				<text><![CDATA[Admin, Inc.
+795 Folsom Ave, Suite 600
+San Francisco, CA 94107
+Phone: (804) 123-5432
+Email: info@almasaeedstudio.com ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="237" y="0" width="117" height="16" uuid="eb79d590-2703-4281-a443-551f9bf63dfb"/>
+				<textElement markup="none">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nom client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="0" width="72" height="16" uuid="83bf9bc5-7dc0-494f-9559-b7f167725303"/>
+				<text><![CDATA[Matricule :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="237" y="42" width="69" height="13" uuid="54bed538-02b8-448b-9a47-37c15778576b"/>
+				<textFieldExpression><![CDATA[$F{tel_1 client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="195" y="0" width="42" height="16" uuid="393d5225-21b8-4e4c-9524-96fec9e92bce"/>
+				<text><![CDATA[Client :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="195" y="42" width="42" height="13" uuid="3682dfe9-03f0-465b-9cb3-4ebb4a7bbbb1"/>
+				<text><![CDATA[Phone :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="237" y="55" width="145" height="14" uuid="ff19af19-b85f-4edd-a5cc-df5eb53ee872"/>
+				<textFieldExpression><![CDATA[$F{Email client}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="42" width="76" height="13" uuid="065d54d4-c6e6-4c6b-84da-fe164278b1b7"/>
+				<textFieldExpression><![CDATA[$F{tel_2 client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="195" y="55" width="42" height="14" uuid="e8287d53-7602-4e0d-bb45-482006bd2db7"/>
+				<text><![CDATA[Email :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="263" y="16" width="91" height="14" uuid="b51cce0b-e3a3-4c1c-b1ca-2ba6217cda86"/>
+				<textFieldExpression><![CDATA[$F{fax}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="30" width="159" height="14" uuid="439ba613-93bc-4a3a-a033-823c345ac258"/>
+				<textFieldExpression><![CDATA[$F{Ville client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="195" y="16" width="68" height="14" uuid="b027741a-04a0-430a-b9b6-f91020391ab9"/>
+				<text><![CDATA[Fax :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="454" y="0" width="81" height="16" uuid="b3cb01a4-6287-4a3e-b646-730d0668f4d2"/>
+				<textFieldExpression><![CDATA[$F{Code client}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="16" width="72" height="14" uuid="258308a1-f255-421e-b960-8e4fabe886d0"/>
+				<text><![CDATA[Gestionnaire :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="454" y="16" width="101" height="14" uuid="2d985b8b-a344-4f52-88d0-c59410a12456"/>
+				<textFieldExpression><![CDATA[$F{Code gestionnaire}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="30" width="100" height="14" uuid="a8c84918-808a-4c92-8d3f-658cb6dc5168"/>
+				<textFieldExpression><![CDATA[$F{Code agence}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="30" width="72" height="14" uuid="3ca18286-8794-4fc8-8ef7-e394d508323d"/>
+				<text><![CDATA[Agence]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="68" width="554" height="1" uuid="4f0d1395-0484-4af1-8af9-aa5bc0444380"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="161">
+			<staticText>
+				<reportElement x="236" y="69" width="153" height="31" uuid="46ef8699-840b-4049-a0f7-16bd47c9bb92"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Montant caution:  ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="1" y="52" width="190" height="93" uuid="1e2d96c3-a1c6-4a3c-866e-41410e125da1"/>
+				<imageExpression><![CDATA["C:\\Users\\waffeusteve\\Desktop\\download.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="78" y="83" width="113" height="62" uuid="fa495679-c4e2-46c5-9dd7-449be3f4ae0b"/>
+				<imageExpression><![CDATA["C:\\Users\\waffeusteve\\Desktop\\download (1).jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="389" y="69" width="165" height="31" uuid="12766d99-c59c-4779-b88e-a405b2fdf6c4"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Montant caution}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="236" y="68" width="317" height="1" uuid="7350db64-780a-409a-b69c-257ac6d79444"/>
+			</line>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="389" y="37" width="164" height="30" uuid="c03a3e12-e8e4-4fa2-ade8-ef0f1567522d"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="35" width="191" height="17" uuid="dcd26253-89ee-4090-90d3-d55e63bd96dd"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Payment Methods:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="37" width="153" height="30" uuid="98e6a3cc-1a08-4429-a59e-fb1d1ebdc8e0"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Montant du :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="0" width="553" height="1" uuid="26f29bd7-3c97-468e-a57f-04fd67b3f05d"/>
+			</line>
+			<textField pattern="HH.mm">
+				<reportElement x="454" y="51" width="99" height="18" uuid="dc50276b-33d2-4480-b80a-092aa4d33567"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="1" width="42" height="16" uuid="e7ec63ea-9fc4-4210-8c68-b78322f6ae80"/>
+				<text><![CDATA[Numero :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="43" y="1" width="62" height="16" uuid="daa2df97-511f-4fd0-93d5-468f5ba0e52e"/>
+				<textFieldExpression><![CDATA[$F{Numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="17" width="77" height="18" uuid="8fbdb702-e8bc-4805-a155-872a0b3ee846"/>
+				<text><![CDATA[Date emmission :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="17" width="101" height="18" uuid="412044c0-6d4c-42b5-a74f-8795f07b65f3"/>
+				<textFieldExpression><![CDATA[$F{Date emmission}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="136" y="1" width="70" height="16" uuid="fc559a2d-d8eb-4616-8937-7424af0489ea"/>
+				<text><![CDATA[Echeance :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="206" y="1" width="100" height="16" uuid="14e18f81-2aa8-45ce-ba41-6785720b64bf"/>
+				<textFieldExpression><![CDATA[$F{Date echeance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="179" y="17" width="73" height="18" uuid="bee9921e-9edf-4021-a7ad-cc36e3ef3832"/>
+				<text><![CDATA[Duree en jours :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="252" y="17" width="100" height="18" uuid="3bee4d36-cefe-4766-93be-580b467b37e8"/>
+				<textFieldExpression><![CDATA[$F{Duree en jours}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="1" width="100" height="20" uuid="135c6e37-3257-42ba-8db1-0e67ca4d0bba"/>
+				<textFieldExpression><![CDATA[$F{Compte garantie}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="364" y="1" width="90" height="20" uuid="b3b03c2c-5ffa-4fd7-a49d-73b48f35e1f7"/>
+				<text><![CDATA[Compte garantie]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="206" y="34" width="100" height="20" uuid="2d3c2466-1eb3-42e7-bd21-72d0cff3352e"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
