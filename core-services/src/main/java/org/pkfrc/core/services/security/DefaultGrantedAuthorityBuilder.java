@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.pkfrc.core.entities.security.Privilege;
 import org.pkfrc.core.entities.security.Role;
 import org.pkfrc.core.entities.security.User;
 import org.pkfrc.core.utilities.helper.SpringBeanHelper;
@@ -63,13 +62,7 @@ public class DefaultGrantedAuthorityBuilder {
         return privileges;
     }
 
-    public static Set<String> getPrivileges(Collection<Privilege> privileges) {
-        Set<String> strPrivileges = new HashSet<>();
-        for (Privilege item : privileges) {
-            strPrivileges.add(item.getName());
-        }
-        return strPrivileges;
-    }
+    
 
     public static List<GrantedAuthority> getGrantedAuthorities(Set<String> privileges) {
         List<GrantedAuthority> authorities = new ArrayList<>();

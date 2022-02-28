@@ -2,24 +2,23 @@ package org.pkfrc.vending.dto.product;
 
 import java.io.Serializable;
 
-import org.pkfrc.core.dto.base.AbstractDTO;
-import org.pkfrc.core.entities.security.User;
+import org.pkfrc.core.dto.base.AbstractParamDTO;
+import org.pkfrc.core.dto.security.UserResume;
 import org.pkfrc.vending.entities.product.Product;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 
-@Data
+
 @NoArgsConstructor
-public class ProductDTO extends AbstractDTO<Product, Long> implements Serializable{
+public class ProductDTO extends AbstractParamDTO<Product, Long> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Integer quantity;
 	private Double cost;
-	private User seller;
+	private UserResume seller;
 
 	public ProductDTO(Product entity) {
 		super(entity);
@@ -32,4 +31,30 @@ public class ProductDTO extends AbstractDTO<Product, Long> implements Serializab
 		mapper.map(this, entity);
 		return entity;
 	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public Double getCost() {
+		return cost;
+	}
+
+	public void setCost(Double cost) {
+		this.cost = cost;
+	}
+
+	public UserResume getSeller() {
+		return seller;
+	}
+
+	public void setSeller(UserResume seller) {
+		this.seller = seller;
+	}
+	
+	
 }

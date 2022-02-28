@@ -1,12 +1,8 @@
 package org.pkfrc.core.services.security;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import org.pkfrc.core.entities.enums.EUserStatus;
 import org.pkfrc.core.entities.enums.EUserType;
-import org.pkfrc.core.entities.security.Role;
 import org.pkfrc.core.entities.security.User;
 
 import lombok.Data;
@@ -15,6 +11,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class UserWithToken implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private EUserType type;
 	private String token;

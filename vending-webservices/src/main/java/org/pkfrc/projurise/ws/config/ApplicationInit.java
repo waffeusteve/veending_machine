@@ -7,8 +7,6 @@ import org.pkfrc.core.entities.enums.EUserStatus;
 import org.pkfrc.core.entities.enums.EUserType;
 import org.pkfrc.core.entities.security.Role;
 import org.pkfrc.core.entities.security.User;
-import org.pkfrc.core.repo.config.ServerConfigRepository;
-import org.pkfrc.core.repo.security.PrivilegeRepository;
 import org.pkfrc.core.repo.security.RoleRepository;
 import org.pkfrc.core.repo.security.UserRepository;
 import org.pkfrc.core.services.security.BcryptEncryption;
@@ -28,11 +26,7 @@ public class ApplicationInit {
 	@Autowired
 	RoleRepository roleRepository;
 
-	@Autowired
-	PrivilegeRepository privilegeRepository;
-
-	@Autowired
-	ServerConfigRepository serverConfigRepository;
+	
 
 	@PostConstruct
 	public void ini() throws Exception {

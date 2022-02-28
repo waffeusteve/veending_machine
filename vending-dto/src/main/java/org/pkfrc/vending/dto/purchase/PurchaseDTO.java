@@ -7,12 +7,11 @@ import org.pkfrc.core.entities.security.User;
 import org.pkfrc.vending.dto.product.ProductDTO;
 import org.pkfrc.vending.entities.purchase.Purchase;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 
-@Data
+
 @NoArgsConstructor
 public class PurchaseDTO extends AbstractDTO<Purchase, Long> implements Serializable{
 
@@ -33,4 +32,31 @@ public class PurchaseDTO extends AbstractDTO<Purchase, Long> implements Serializ
 		mapper.map(this, entity);
 		return entity;
 	}
+
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
+	}
+
+	public User getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
+	}
+
+	public ProductDTO getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductDTO product) {
+		this.product = product;
+	}
+	
+	
+	
 }

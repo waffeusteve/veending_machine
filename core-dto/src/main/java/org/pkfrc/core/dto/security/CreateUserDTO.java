@@ -14,10 +14,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateUserDTO implements DtoToEntity<User> {
 
-    private String userName;
-    private EUserType type;
-    private String password;
-    private Double deposit;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	Double deposit;
+    String userName;
+    String password;
+    EUserType type;
 
     private static ModelMapper mapper = new ModelMapper();
     @Override

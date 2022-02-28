@@ -21,4 +21,6 @@ public interface IUserService extends IBaseService<User, Long> {
     ServiceData<User> changePassword(Long id, String password) throws Exception;
 
 	ServiceData<User> doDeposit(User user, Integer coin) throws Exception;
+
+	ServiceData<User> doResetDeposit(User user) throws Exception;
 }

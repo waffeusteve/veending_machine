@@ -26,7 +26,6 @@ import org.pkfrc.core.persistence.tools.OrderContainer;
 import org.pkfrc.core.persistence.tools.RestrictionsContainer;
 import org.pkfrc.core.persistence.vendors.Vendor;
 import org.pkfrc.core.services.enums.EServiceDataType;
-import org.pkfrc.core.services.helper.ReferenceHelper;
 import org.pkfrc.core.utilities.enumerations.ETransactionalOperation;
 import org.pkfrc.core.utilities.exceptions.SmartTechException;
 import org.pkfrc.core.utilities.helper.StringHelper;
@@ -68,8 +67,6 @@ public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Seria
     @Autowired
     protected Vendor vendor;
 
-    @Autowired
-    protected ReferenceHelper refHelper;
 
 
 	protected abstract Logger getLogger();
@@ -94,7 +91,7 @@ public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Seria
 	@PostConstruct
 	private void init() {
 		dao.setManager(getManager());
-        refHelper.setParams(getVendor(), dao);
+//        refHelper.setParams(getVendor(), dao);
 	}
 
 
@@ -198,7 +195,7 @@ public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Seria
 		return sData;
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	protected ServiceData<E> save(User user, E record, ETransactionalOperation operation, boolean validate)
 			throws Exception {
 		ServiceData<E> sData = createServiceData();
@@ -218,7 +215,7 @@ public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Seria
 		}
 		if (operation.equals(ETransactionalOperation.Create)) {
 			message = CREATE_SUCCESSFUL;
-            record = refHelper.generate(record);
+//            record = refHelper.generate(record);
             record = dao.saveAndFlush(record);
 		} else {
 			message = UPDATE_SUCCESSFUL;
@@ -481,6 +478,7 @@ public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Seria
         return dao.countObject(getClazz());
     }
 
+	
 	@Override
 	public Integer count(List<SearchCriteria> criterias, int first, int size) throws Exception {
         List<SearchCriteria> criteriasWithAlias = SearchCriteria.buildAliasFromSearchCriterias(criterias);
@@ -489,6 +487,7 @@ public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Seria
 		return count(alias, restrictions, null, first, size);
 	}
 
+	
 	@Override
 	public Integer count(AliasesContainer alias, RestrictionsContainer restrictions, OrderContainer order, int first,
 						 int size) throws Exception {

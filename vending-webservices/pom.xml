@@ -25,6 +25,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.pkfrc.core</groupId>
+			<artifactId>core-utilities</artifactId>
+			<version>0.0.3-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pkfrc.core</groupId>
 			<artifactId>core-webservices</artifactId>
 			<version>${pkfrc-core.version}</version>
 		</dependency>

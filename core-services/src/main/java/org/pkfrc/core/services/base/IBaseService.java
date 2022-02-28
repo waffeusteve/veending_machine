@@ -51,11 +51,6 @@ public interface IBaseService<E extends BaseEntity<ID>, ID extends Serializable>
 
 	ServiceData<E> findPage(List<SearchCriteria> criterias, int page, int size);
 
-	Integer count(List<SearchCriteria> criterias, int first, int size) throws Exception;
-
-	Integer count(AliasesContainer alias, RestrictionsContainer restrictions, OrderContainer order, int first,
-				  int size) throws Exception;
-
 	ServiceData<E> findOne(List<SearchCriteria> criterias) throws Exception;
 
 	ServiceData<E> findOneByAttribute(String attributeName, Object value) throws Exception;
@@ -65,4 +60,9 @@ public interface IBaseService<E extends BaseEntity<ID>, ID extends Serializable>
     ServiceData<E> findByCode(Object value) throws Exception;
 
     ServiceData<E> findOneBy2Attributes(String attributeName1, Object value1, String attributeName2, Object value2)  throws Exception;
+
+	Integer count(List<SearchCriteria> criterias, int first, int size) throws Exception;
+
+	Integer count(AliasesContainer alias, RestrictionsContainer restrictions, OrderContainer order, int first, int size)
+			throws Exception;
 }

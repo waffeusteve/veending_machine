@@ -18,7 +18,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import org.hibernate.envers.Audited;
 import org.pkfrc.core.entities.base.BaseEntity;
 import org.pkfrc.core.entities.enums.EUserStatus;
 import org.pkfrc.core.entities.enums.EUserType;
@@ -26,11 +25,13 @@ import org.pkfrc.core.entities.enums.EUserType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * Entity representing a user of the application.
  */
-@Audited
+
+@ToString(exclude = "roles")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -39,6 +40,12 @@ import lombok.NoArgsConstructor;
 @SequenceGenerator(name = "RC_USER_SEQ", sequenceName = "RC_USER_SEQ", allocationSize = 1, initialValue = 1)
 @Inheritance(strategy=InheritanceType.JOINED)
 public class User implements BaseEntity<Long> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	@Id
     @Column(name = "id", unique = true, updatable = false)
@@ -82,4 +89,6 @@ public class User implements BaseEntity<Long> {
 
     @Version
     private Long version;
+    
+    
 }

@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.pkfrc.core.entities.enums.EUserStatus;
+import org.pkfrc.core.entities.security.LocalJwt;
 import org.pkfrc.core.entities.security.User;
+import org.pkfrc.core.repo.security.ILocalJwtRepository;
+import org.pkfrc.core.repo.security.RoleRepository;
 import org.pkfrc.core.repo.security.UserRepository;
 import org.pkfrc.core.services.base.BaseServiceImpl;
 import org.pkfrc.core.services.base.ServiceData;
@@ -30,6 +33,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 	public static final String AUTH_ACCOUNT_LOCKED = "AccountLocked";
 	public static final String AUTH_INVALID_CREDENTIALS = "InvalidCredentials";
 	public static final String AUTH_SUCCESS = "LoginSuccess";
+	public static final String AUTH_OTHER_SESSIONS_OPENED = "There is already an active session using your account";
 
 	@Autowired
 	UserRepository repo;
@@ -37,12 +41,18 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 	@Autowired
 	JwtService jwtService;
 
+	@Autowired
+	ILocalJwtRepository localJwtRepo;
+
 	Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
 	@Override
 	protected Logger getLogger() {
 		return logger;
 	}
+
+	@Autowired
+	RoleRepository roleRepository;
 
 	@Override
 	protected Class<User> getClazz() {
@@ -52,6 +62,17 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 	@Override
 	protected List<Validation> validateRecord(User record, ETransactionalOperation operation) {
 		List<Validation> validations = new ArrayList<>();
+		if (record.getDeposit() == null || record.getDeposit().intValue() % 5 != 0)
+			validations.add(new Validation(getClazz().getSimpleName(), "deposit_should_be_in_multiples_of_5",
+					"deposit_should_be_in_multiples_of_5"));
+		if (operation.equals(ETransactionalOperation.Create)
+				&& repo.findByUserNameIgnoreCase(record.getUserName()) != null)
+			validations.add(
+					new Validation(getClazz().getSimpleName(), "User_Name_Already_Used", "User_Name_Already_Used"));
+		if (record.getType()==null || record.getUserName()==null || record.getPassword()==null || record.getDeposit()==null )
+			validations.add(
+					new Validation(getClazz().getSimpleName(), "Invalid_data_for_registration", "Invalid_data_for_registration"));
+
 		return validations;
 	}
 
@@ -62,31 +83,42 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 
 	@Override
 	public ServiceData<User> create(User user, User record, boolean validate) throws Exception {
-		List<Validation> validations = validateCreate(user, record);
 		user = repo.findByUserNameIgnoreCase("SYSTEM");
-		if (!validations.isEmpty()) {
+		List<Validation> validations = validateRecord(record, ETransactionalOperation.Create);
+		if (!validations.isEmpty())
 			return getInvalidResult(validations);
-		}
+		if (record.getType() != null)
+			record.getRoles().add(roleRepository.findByName(record.getType().name()));
+
 		record.setDefaultPwd(true);
 		record.setStatus(EUserStatus.Active);
 		record.setPassword(BcryptEncryption.encode(record.getPassword()));
-		ServiceData<User> sData = super.create(user, record, false);
-		return sData;
+		return super.create(user, record, false);
 	}
 
-	
 	@Override
 	public ServiceData<User> doDeposit(User user, Integer coin) throws Exception {
 		List<Validation> result = new ArrayList<>(0);
 		List<Integer> integers = Arrays.asList(5, 10, 20, 50, 100);
 		boolean integerExists = integers.contains(coin);
-		if (integerExists) {
+		if (!integerExists) {
 			result.add(new Validation(getClazz().getSimpleName(), "Invalid_coin", "Invalid_coin"));
 			return getInvalidResult(result);
 		}
 
-		user.setDeposit(user.getDeposit()+coin.doubleValue());
-		return super.update(user, user);
+		user.setDeposit(user.getDeposit() + coin.doubleValue());
+		return super.update(user, user, false);
+	}
+
+	@Override
+	public ServiceData<User> doResetDeposit(User user) throws Exception {
+		List<Validation> val = new ArrayList<>(0);
+		if (user.getDeposit().intValue() == 0) {
+			val.add(new Validation(getClazz().getSimpleName(), "Account_already_reset", "Account_already_reset"));
+			return getInvalidResult(val);
+		}
+		user.setDeposit(0.00);
+		return super.update(user, user, false);
 	}
 
 	protected List<Validation> validateCreate(User userCreating, User record) {
@@ -94,7 +126,6 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 		checkUserCreating(userCreating);
 		return validations;
 	}
-
 
 	private void checkUserCreating(User userCreating) {
 		if (userCreating == null) {
@@ -168,8 +199,18 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 			if (msg.isEmpty()) {
 				if (BcryptEncryption.matches(password, user.getPassword())) {
 					response.setSuccess(true);
-					response.setMessage(AUTH_SUCCESS);
-					response.setUser(new UserWithToken(user, jwtService.toToken(user)));
+					UserWithToken usr = new UserWithToken(user, jwtService.toToken(user));
+					response.setUser(usr);
+
+					// Check open sessions
+					List<LocalJwt> sessionsOpened = localJwtRepo.findByUserId(user.getId());
+					response.setMessage(!sessionsOpened.isEmpty() ? AUTH_OTHER_SESSIONS_OPENED : AUTH_SUCCESS);
+
+					// store token in db
+					LocalJwt storeJwt = new LocalJwt();
+					storeJwt.setToken(usr.getToken());
+					storeJwt.setUserId(user.getId());
+					localJwtRepo.save(storeJwt);
 				} else {
 					response.setMessage(AUTH_INVALID_CREDENTIALS);
 				}
@@ -253,6 +294,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 			}
 			return super.setServiceData(sData, repo.findByUserName(username));
 		}
+
 		sData.setMessage("User.Not.Found");
 		sData.setType(EServiceDataType.Record);
 		return sData;

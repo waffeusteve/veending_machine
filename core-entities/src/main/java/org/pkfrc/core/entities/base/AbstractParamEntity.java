@@ -1,13 +1,11 @@
 package org.pkfrc.core.entities.base;
 
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.MappedSuperclass;
 
-@Data
+@SuppressWarnings("unchecked")
 @MappedSuperclass
 public abstract class AbstractParamEntity<ID extends Serializable> extends AbstractEntity<ID>
 		implements ParamEntity<ID>, Serializable {
@@ -31,7 +29,7 @@ public abstract class AbstractParamEntity<ID extends Serializable> extends Abstr
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -53,4 +51,65 @@ public abstract class AbstractParamEntity<ID extends Serializable> extends Abstr
 		return code.compareToIgnoreCase(arg0.getCode());
 	}
 
+
+	public String getCode() {
+		return code;
+	}
+
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+
+	public String getDesignation() {
+		return designation;
+	}
+
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+
+	public String getUserCreate() {
+		return userCreate;
+	}
+
+
+	public void setUserCreate(String userCreate) {
+		this.userCreate = userCreate;
+	}
+
+
+	public String getUserUpdate() {
+		return userUpdate;
+	}
+
+
+	public void setUserUpdate(String userUpdate) {
+		this.userUpdate = userUpdate;
+	}
+
+
+	public Date getDateLastUpdate() {
+		return dateLastUpdate;
+	}
+
+
+	public void setDateLastUpdate(Date dateLastUpdate) {
+		this.dateLastUpdate = dateLastUpdate;
+	}
+
+
+	public Date getDateCreate() {
+		return dateCreate;
+	}
+
+
+	public void setDateCreate(Date dateCreate) {
+		this.dateCreate = dateCreate;
+	}
+
+	
 }

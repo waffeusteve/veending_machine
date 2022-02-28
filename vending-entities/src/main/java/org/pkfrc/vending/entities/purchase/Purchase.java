@@ -20,11 +20,7 @@ import org.pkfrc.core.entities.base.AbstractParamEntity;
 import org.pkfrc.core.entities.security.User;
 import org.pkfrc.vending.entities.product.Product;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
 @Entity
 @Table(name = "VEND_PURCHASE")
 @SequenceGenerator(name = "VEND_PURCHASE_SEQ", sequenceName = "VEND_PURCHASE_SEQ", allocationSize = 1, initialValue = 1)
@@ -55,4 +51,46 @@ public class Purchase extends AbstractParamEntity<Long> implements Serializable 
 	
 	@Transient
 	private Double accountBalance;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public User getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Double getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(Double accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+	
+	
 }

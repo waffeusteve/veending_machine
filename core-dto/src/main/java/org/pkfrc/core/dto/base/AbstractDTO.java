@@ -1,26 +1,33 @@
 package org.pkfrc.core.dto.base;
 
-import org.modelmapper.ModelMapper;
-import org.pkfrc.core.entities.base.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+import org.modelmapper.ModelMapper;
+import org.pkfrc.core.entities.base.BaseEntity;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
 * @author Ulrich lele
  */
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract  class AbstractDTO<E extends BaseEntity<ID>, ID extends Serializable>  implements EntityDTO<E, ID> {
 
-    protected ID id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected ID id;
     protected Long version;
 
 //    protected String userCreate;
@@ -112,4 +119,22 @@ public abstract  class AbstractDTO<E extends BaseEntity<ID>, ID extends Serializ
         return (List<D>) toDTOs(clazz, new ArrayList<>(0), entities);
 
     }
+
+	public ID getId() {
+		return id;
+	}
+
+	public void setId(ID id) {
+		this.id = id;
+	}
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
+    
+    
 }

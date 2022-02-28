@@ -1,11 +1,10 @@
 package org.pkfrc.core.persistence.model;
 
-import org.pkfrc.core.utilities.exceptions.SmartTechException;
-import org.pkfrc.core.utilities.helper.StringHelper;
-import org.springframework.util.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.pkfrc.core.utilities.exceptions.SmartTechException;
+import org.pkfrc.core.utilities.helper.StringHelper;
 
 public class SearchCriteria {
 	private String key;

@@ -22,9 +22,6 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 	@Autowired
 	ProductRepository repository;
 
-	@Autowired
-	IProductService ProductService;
-
 	Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
 	@Override
@@ -40,6 +37,22 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 	@Override
 	protected List<Validation> validateRecord(Product record, ETransactionalOperation operation) {
 		List<Validation> result = new ArrayList<>();
+		if (record == null) {
+			result.add(new Validation(getClazz().getSimpleName(), "No_product_selected", "No_product_selected"));
+			return result;
+		}
+
+		if (record.getCost().intValue() % 5 != 0)
+			result.add(new Validation(getClazz().getSimpleName(), "should_be_in_multiples_of_5",
+					"should_be_in_multiples_of_5"));
+
+		if (record.getCost() == null || record.getCost() <= 0)
+			result.add(new Validation(getClazz().getSimpleName(), "Invalid_cost", "Invalid_cost"));
+
+		if (record.getQuantity() == null || record.getQuantity() <= 0)
+			result.add(new Validation(getClazz().getSimpleName(), "Invalid_quantity", "Invalid_quantity"));
+		if (record.getDesignation() == null)
+			result.add(new Validation(getClazz().getSimpleName(), "Assigne_designation", "Assigne_designation"));
 
 		return result;
 	}
@@ -47,6 +60,36 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 	@Override
 	protected List<Validation> validateRecords(Collection<Product> record, ETransactionalOperation operation) {
 		return null;
+	}
+
+	@Override
+	public ServiceData<Product> delete(User user, Long recordId) throws Exception {
+		List<Validation> val = new ArrayList<>(0);
+		if (recordId == null) {
+			val.add(new Validation(getClazz().getSimpleName(), "No_product_selected", "No_product_selected"));
+			return getInvalidResult(val);
+		}
+		Product product = repository.findById(recordId).orElse(null);
+		if (product == null) {
+			val.add(new Validation(getClazz().getSimpleName(), "Product_not_exit", "Product_not_exit"));
+			return getInvalidResult(val);
+		}
+		if (product.getSeller().getId() != user.getId()) {
+			val.add(new Validation(getClazz().getSimpleName(), "Unauthorised", "Unauthorised"));
+			return getInvalidResult(val);
+		}
+		return super.delete(user, recordId, false);
+	}
+
+	@Override
+	public ServiceData<Product> update(User user, Product record) throws Exception {
+		List<Validation> val = validateRecord(record, ETransactionalOperation.Update);
+		if (val.isEmpty() || record.getSeller().getId() != user.getId()) {
+			val.add(new Validation(getClazz().getSimpleName(), "Unauthorised", "Unauthorised"));
+			return getInvalidResult(val);
+		}
+		record.setSeller(user);
+		return super.update(user, record);
 	}
 
 	@Override
@@ -61,10 +104,10 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 				: "00000";
 		String incre = String.format("%0" + originale.length() + "d", Integer.parseInt(originale) + 1);
 		record.setCode(incre);
+		record.setSeller(user);
 		serviceResult = super.create(user, record, false);
 		return serviceResult;
 
 	}
 
-	
 }

@@ -10,21 +10,21 @@ public class BuyResponse implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Double totalSpent;
+	private Integer totalSpent;
 	private String productName;
 	private Double accountBalance;
 	
 	public BuyResponse(Purchase entity) {
-		this.totalSpent = entity.getProduct().getCost()*entity.getQuantity();
+		this.totalSpent = entity.getProduct().getCost().intValue()* entity.getQuantity();
 		this.productName = entity.getProduct().getDesignation();
 		this.accountBalance = entity.getAccountBalance();
 	}
 
-	public Double getTotalSpent() {
+	public Integer getTotalSpent() {
 		return totalSpent;
 	}
 
-	public void setTotalSpent(Double totalSpent) {
+	public void setTotalSpent(Integer totalSpent) {
 		this.totalSpent = totalSpent;
 	}
 

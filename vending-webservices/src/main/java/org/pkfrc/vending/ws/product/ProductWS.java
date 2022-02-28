@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/Product")
+@RequestMapping(value = "/product")
 public class ProductWS extends BaseWS<Product, Long> {
 
     Logger logger = LoggerFactory.getLogger(ProductWS.class);
@@ -50,7 +50,7 @@ public class ProductWS extends BaseWS<Product, Long> {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<BaseRecordDTO<ProductDTO>> findEntity(@PathVariable Long id, @RequestParam(value = "lang", required = false, defaultValue = defaultLang) String lang) {
+    public ResponseEntity<BaseRecordDTO<ProductDTO>> findEntity(@PathVariable Long id, @RequestParam(value = "lang", required = true, defaultValue = defaultLang) String lang) {
         return super.findEntity(id, ProductDTO.class);
     }
 
@@ -64,15 +64,15 @@ public class ProductWS extends BaseWS<Product, Long> {
             return new ResponseEntity<>(evaluateException(e), STATUS_OK);
         }
     }
-    @PostMapping
-    public ResponseEntity<BaseRecordDTO<ProductDTO>> create(
+    @PostMapping(value = "/add")
+    public ResponseEntity<BaseRecordDTO<ProductDTO>> add(
             @RequestBody ProductDTO dto,
             @RequestParam(value = "lang", required = false, defaultValue = defaultLang) String lang ) {
         return super.create(dto, new Product(), "admin", ProductDTO.class);
     }
 
-    @PutMapping
-    public ResponseEntity<BaseRecordDTO<ProductDTO>> update(
+    @PutMapping(value = "/edit")
+    public ResponseEntity<BaseRecordDTO<ProductDTO>> edit(
             @RequestBody ProductDTO dto,
             @RequestParam(value = "lang", required = false, defaultValue = defaultLang) String lang) {
         return super.update(dto, new Product(), "admin");
@@ -99,9 +99,9 @@ public class ProductWS extends BaseWS<Product, Long> {
         return super.findPage(criterias, page, size, ProductDTO.class);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<BaseRecordDTO<ProductDTO>> deleteEntity(@PathVariable Long id, @RequestParam(value = "lang", required = false, defaultValue = defaultLang) String lang) {
-        return super.delete(id, ProductDTO.class, "");
+        return super.delete(id, ProductDTO.class, "admin");
     }   
     
 }

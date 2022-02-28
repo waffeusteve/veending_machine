@@ -40,11 +40,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/user/roles").hasAnyAuthority("ROLE_SELLER")
-				.antMatchers((HttpMethod.POST), "/product**").hasAnyAuthority("ROLE_SELLER")
-				.antMatchers((HttpMethod.PUT), "/product**").hasAnyAuthority("ROLE_SELLER")
-				.antMatchers((HttpMethod.DELETE), "/product**").hasAnyAuthority("ROLE_SELLER")
-				.antMatchers(HttpMethod.GET, "/").permitAll().antMatchers(HttpMethod.POST, "/user/login").permitAll()
-				.antMatchers(HttpMethod.POST, "/user/register").permitAll().antMatchers(HttpMethod.GET, "/actuator/**")
+				.antMatchers((HttpMethod.POST), "/product/add").hasAnyAuthority("ROLE_SELLER")
+				.antMatchers((HttpMethod.PUT), "/product/edit").hasAnyAuthority("ROLE_SELLER")
+				.antMatchers((HttpMethod.DELETE), "/product/delete").hasAnyAuthority("ROLE_SELLER")
+				.antMatchers((HttpMethod.POST), "/user/deposit").hasAnyAuthority("ROLE_BUYER")
+				.antMatchers((HttpMethod.POST), "/purchase/buy").hasAnyAuthority("ROLE_BUYER")
+				.antMatchers((HttpMethod.GET), "/user/reset").hasAnyAuthority("ROLE_BUYER")
+				.antMatchers(HttpMethod.GET, "/").permitAll()
+				.antMatchers(HttpMethod.POST, "/user/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/user/register").permitAll()
+				.antMatchers(HttpMethod.GET, "/actuator/**")
 				.permitAll().anyRequest().authenticated();
 
 		http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

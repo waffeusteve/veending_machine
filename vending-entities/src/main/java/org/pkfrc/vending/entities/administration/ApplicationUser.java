@@ -18,7 +18,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import org.hibernate.envers.Audited;
 import org.pkfrc.core.entities.base.BaseEntity;
 import org.pkfrc.core.entities.security.Role;
 
@@ -29,7 +28,7 @@ import lombok.NoArgsConstructor;
 /**
  * Entity representing a user of the application.
  */
-@Audited
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

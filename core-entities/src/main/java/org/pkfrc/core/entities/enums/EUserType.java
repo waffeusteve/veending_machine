@@ -1,7 +1,7 @@
 package org.pkfrc.core.entities.enums;
 
 public enum EUserType {
-    Buyer, seller, Root;
+    buyer, seller;
 
     @Override
     public String toString() {

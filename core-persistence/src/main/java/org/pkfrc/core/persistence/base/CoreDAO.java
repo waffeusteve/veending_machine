@@ -6,10 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.transaction.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -27,6 +26,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
+@SuppressWarnings("unchecked")
 public class CoreDAO {
 
 	// @PersistenceContext
@@ -44,11 +44,12 @@ public class CoreDAO {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	public <T> T findOne(Class<T> entityClass, Object entityID) {
 
 		Session session = (Session) manager.getDelegate();
 
+		@SuppressWarnings("deprecation")
 		Criteria criteria = session.createCriteria(entityClass);
 
 		criteria.add(Restrictions.idEq(entityID));
@@ -108,7 +109,7 @@ public class CoreDAO {
 		query.executeUpdate();
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	public <T> List<T> findByQuery(String queryName, Object... argList) throws Exception {
 		Query query = manager.createNativeQuery(queryName);
 		if (argList != null && argList.length != 0) {
@@ -124,7 +125,7 @@ public class CoreDAO {
 		return query.getResultList();
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	public <T extends Object> List<T> findByQuery(String queryName, Integer first, Integer max, Object... argList)
 			throws Exception {
 		Query query = manager.createNativeQuery(queryName);
@@ -182,12 +183,7 @@ public class CoreDAO {
 		}
 		return filter(clazz, alias, restrictions, null, loaderModes, first, max);
 	}
-
-	public <T> List<T> listObject(Class<T> clazz, Map<String, String> paramAlias, Map<String, String> paramLike,
-			Map<String, Object> paramEq, LoaderModeContainer loaderModes) throws Exception {
-		return listObject(clazz, paramAlias, paramLike, paramEq, loaderModes, 0, -1);
-	}
-
+	
 	public <T> Integer countObject(Class<T> clazz, Map<String, String> paramAlias, Map<String, String> paramLike,
 			Map<String, Object> paramEq, LoaderModeContainer loaderModes) throws Exception {
 		return countObject(clazz, paramAlias, paramLike, paramEq, loaderModes, 0, -1);
@@ -279,6 +275,7 @@ public class CoreDAO {
 		// Criteria");
 
 		// Creation de la requête de recherche
+		@SuppressWarnings("deprecation")
 		Criteria criteria = session.createCriteria(clazz);
 		// Ajout de la restriction du retour au nombre de ligne
 		criteria.setProjection(Projections.rowCount());
@@ -350,7 +347,11 @@ public class CoreDAO {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
+	public <T> List<T> listObject(Class<T> clazz, Map<String, String> paramAlias, Map<String, String> paramLike,
+			Map<String, Object> paramEq, LoaderModeContainer loaderModes) throws Exception {
+		return listObject(clazz, paramAlias, paramLike, paramEq, loaderModes, 0, -1);
+	}
+	
 	public <T> List<T> filter(Class<T> clazz, AliasesContainer alias, RestrictionsContainer restrictions,
 			OrderContainer orders, LoaderModeContainer loaderModes, int firstResult, int maxResult) throws Exception {
 
@@ -377,6 +378,7 @@ public class CoreDAO {
 		// logger.info("JPAGenericDAO#filter - Creation de la requête Criteria");
 
 		// Creation de la requête de recherche
+		@SuppressWarnings("deprecation")
 		Criteria criteria = session.createCriteria(clazz);
 
 		// Liste resultat

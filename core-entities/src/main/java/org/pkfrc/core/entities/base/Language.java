@@ -1,15 +1,18 @@
 package org.pkfrc.core.entities.base;
 
-import lombok.Data;
-import org.pkfrc.core.entities.translation.Translation;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 import org.pkfrc.core.utilities.enumerations.EWriteMode;
 
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.*;
-
-@Data
 @Entity
 @Table(name = "PKF_CR_LANGUAGE")
 @SequenceGenerator(name = "PKF_CR_LANGUAGE_SEQ", sequenceName = "PKF_CR_LANGUAGE_SEQ", allocationSize = 1, initialValue = 1)
@@ -39,11 +42,6 @@ public class Language extends AbstractParamEntity<Long> implements  Comparable<L
 	@Column(name = "LANG_ACTIVE")
 	private boolean active;
 
-
-	@OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
-	@JoinColumn(name = "LANG_ID", foreignKey = @ForeignKey(name = "FK_TRANSLATION_LANGUAGE"))
-	public Set<Translation> translations = new HashSet<>(0);
-
 	public Language() {
 	}
 
@@ -51,4 +49,55 @@ public class Language extends AbstractParamEntity<Long> implements  Comparable<L
 	public int compareTo(Language o) {
 		return o.getCode().compareTo(o.getCode());
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public EWriteMode getMode() {
+		return mode;
+	}
+
+	public void setMode(EWriteMode mode) {
+		this.mode = mode;
+	}
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public boolean isPrefered() {
+		return prefered;
+	}
+
+	public void setPrefered(boolean prefered) {
+		this.prefered = prefered;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	
+	
 }

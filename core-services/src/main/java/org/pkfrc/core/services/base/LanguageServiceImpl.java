@@ -5,10 +5,11 @@ import java.util.Collection;
 import java.util.List;
 
 import org.pkfrc.core.entities.base.Language;
+import org.pkfrc.core.persistence.model.ESearchOperationType;
 import org.pkfrc.core.persistence.model.SearchCriteria;
 import org.pkfrc.core.utilities.enumerations.ETransactionalOperation;
-import org.slf4j.Logger;import org.slf4j.LoggerFactory; 
-import org.pkfrc.core.persistence.model.ESearchOperationType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -43,6 +44,12 @@ public class LanguageServiceImpl extends BaseServiceImpl<Language, Long> impleme
 	@Override
 	protected Class<Language> getClazz() {
 		return Language.class;
+	}
+
+	@Override
+	public Integer count() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
