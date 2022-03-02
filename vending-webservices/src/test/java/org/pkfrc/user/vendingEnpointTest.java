@@ -85,7 +85,6 @@ class vendingEndPointTest {
     }
 
 	@Test
-	@Order(2)
 	public void register() throws Exception {
 		CreateUserDTO buyer = new CreateUserDTO(50000.0, "buyer", "123456", EUserType.buyer);
 		String buyerJson = new ObjectMapper().writeValueAsString(buyer);

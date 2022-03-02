@@ -21,8 +21,7 @@ public class UserResume  implements Serializable{
 	
 	private String userName;
     private EUserType type;
-    private EUserStatus status; 
-    private Boolean sessionUp = Boolean.FALSE;
+    private EUserStatus status;
     private Double deposit;
     
     public static ModelMapper mapper = new ModelMapper();

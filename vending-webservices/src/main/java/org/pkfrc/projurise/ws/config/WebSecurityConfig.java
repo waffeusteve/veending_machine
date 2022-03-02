@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -46,13 +47,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers((HttpMethod.POST), "/user/deposit").hasAnyAuthority("ROLE_BUYER")
 				.antMatchers((HttpMethod.POST), "/purchase/buy").hasAnyAuthority("ROLE_BUYER")
 				.antMatchers((HttpMethod.GET), "/user/reset").hasAnyAuthority("ROLE_BUYER")
-				.antMatchers(HttpMethod.GET, "/").permitAll()
-				.antMatchers(HttpMethod.POST, "/user/login").permitAll()
-				.antMatchers(HttpMethod.POST, "/user/register").permitAll()
-				.antMatchers(HttpMethod.GET, "/actuator/**")
+				.antMatchers(HttpMethod.GET, "/").permitAll().antMatchers(HttpMethod.POST, "/user/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/user/register").permitAll().antMatchers(HttpMethod.GET, "/actuator/**")
+				.permitAll().antMatchers("/swagger-ui**").permitAll().antMatchers(HttpMethod.POST, "/swagger-ui**")
 				.permitAll().anyRequest().authenticated();
 
 		http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
+				"/configuration/security", "/swagger-ui.html", "/webjars/**");
 	}
 
 	@Bean

@@ -37,7 +37,7 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialec
 hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 
 # Hibernate ddl auto (create, create-drop, validate, update)
-spring.jpa.hibernate.ddl-auto=create
+spring.jpa.hibernate.ddl-auto=update
 
 hibernate.enable_lazy_load_no_trans=true
 spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
