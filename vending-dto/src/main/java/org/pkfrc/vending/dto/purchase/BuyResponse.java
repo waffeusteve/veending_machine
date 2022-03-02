@@ -14,7 +14,7 @@ public class BuyResponse implements Serializable {
 	private String productName;
 	private Double accountBalance;
 	
-	public BuyResponse(Purchase entity) {
+	public BuyResponse(Purchase entity) {		
 		this.totalSpent = entity.getProduct().getCost().intValue()* entity.getQuantity();
 		this.productName = entity.getProduct().getDesignation();
 		this.accountBalance = entity.getAccountBalance();

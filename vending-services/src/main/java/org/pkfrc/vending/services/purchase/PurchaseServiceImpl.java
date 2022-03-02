@@ -79,12 +79,15 @@ public class PurchaseServiceImpl extends BaseServiceImpl<Purchase, Long> impleme
 	@Override
 	@Transactional
 	public ServiceData<Purchase> doBuy(User user, BuyRequest record) throws Exception {
-//		ServiceData<Purchase> serviceResult = super.createServiceData();
 		List<Validation> valRes = validateRecord(record, ETransactionalOperation.Create);
 		if (!valRes.isEmpty()) {
 			return getInvalidResult(valRes);
 		}
 		Product product = productRepo.getOne(record.getProductId());
+		if (product==null) {
+			valRes.add(new Validation(getClazz().getSimpleName(), "Product_not_found", "Product_not_found"));
+			return getInvalidResult(valRes);
+		}
 		Double price = record.getQuantity() * product.getCost();
 		if (price > user.getDeposit()) {
 			valRes.add(new Validation(getClazz().getSimpleName(), "Insufficient_funds", "Insufficient_funds"));
@@ -97,6 +100,7 @@ public class PurchaseServiceImpl extends BaseServiceImpl<Purchase, Long> impleme
 		// create purchase Object START
 		Purchase purchase = new Purchase();
 		purchase.setBuyer(user);
+		purchase.setProduct(product);
 		purchase.setQuantity(record.getQuantity());
 		String originale = repository.getMaxID() != null
 				? repository.findById(repository.getMaxID()).orElse(null).getCode()

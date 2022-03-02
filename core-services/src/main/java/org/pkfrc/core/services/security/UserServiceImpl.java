@@ -120,6 +120,17 @@ public class UserServiceImpl extends BaseServiceImpl<User, Long> implements IUse
 		user.setDeposit(0.00);
 		return super.update(user, user, false);
 	}
+	
+	@Override
+	public LogOutResponse logoutAll(User user) throws Exception {
+		LogOutResponse sData = new LogOutResponse();
+		List<LocalJwt> jwt = localJwtRepo.findByUserId(user.getId());
+		if(!jwt.isEmpty())
+		   localJwtRepo.deleteAll(jwt);
+		sData.setMessage("logout successfull");
+		sData.setSuccess(true);		
+		return sData;
+	}
 
 	protected List<Validation> validateCreate(User userCreating, User record) {
 		List<Validation> validations = new ArrayList<>();

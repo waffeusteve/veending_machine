@@ -12,6 +12,7 @@ import org.pkfrc.core.entities.security.User;
 import org.pkfrc.core.services.base.IBaseService;
 import org.pkfrc.core.services.security.AuthResponse;
 import org.pkfrc.core.services.security.IUserService;
+import org.pkfrc.core.services.security.LogOutResponse;
 import org.pkfrc.core.ws.base.BaseEnumWS;
 import org.pkfrc.core.ws.base.BaseWS;
 import org.slf4j.Logger;
@@ -75,6 +76,17 @@ public class UserWS extends BaseWS<User, Long> {
             return new ResponseEntity<BaseRecordDTO<UserResume>>(result, STATUS_OK);
         } catch (Exception e) {
             return new ResponseEntity<BaseRecordDTO<UserResume>>(evaluateException(e), STATUS_OK);
+        }
+    }
+    
+    @GetMapping(value = "/logout/all")
+    public ResponseEntity<LogOutResponse> logout() {
+        try {
+        	LogOutResponse response = service.logoutAll(getConnectedUser());
+            return new ResponseEntity<>(response, STATUS_OK);
+        } catch (Exception e) {
+        	LogOutResponse response = new LogOutResponse(e.getMessage() != null ? e.getMessage() : e.toString());
+            return new ResponseEntity<>(response, STATUS_OK);
         }
     }
 

@@ -23,4 +23,6 @@ public interface IUserService extends IBaseService<User, Long> {
 	ServiceData<User> doDeposit(User user, Integer coin) throws Exception;
 
 	ServiceData<User> doResetDeposit(User user) throws Exception;
+
+	LogOutResponse logoutAll(User user) throws Exception;
 }

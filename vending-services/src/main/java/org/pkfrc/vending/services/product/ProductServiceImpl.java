@@ -52,7 +52,7 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 		if (record.getQuantity() == null || record.getQuantity() <= 0)
 			result.add(new Validation(getClazz().getSimpleName(), "Invalid_quantity", "Invalid_quantity"));
 		if (record.getDesignation() == null)
-			result.add(new Validation(getClazz().getSimpleName(), "Assigne_designation", "Assigne_designation"));
+			result.add(new Validation(getClazz().getSimpleName(), "Assign_designation", "Assign_designation"));
 
 		return result;
 	}
@@ -84,7 +84,10 @@ public class ProductServiceImpl extends BaseServiceImpl<Product, Long> implement
 	@Override
 	public ServiceData<Product> update(User user, Product record) throws Exception {
 		List<Validation> val = validateRecord(record, ETransactionalOperation.Update);
-		if (val.isEmpty() || record.getSeller().getId() != user.getId()) {
+		if (!val.isEmpty()) {			
+			return getInvalidResult(val);
+		}
+		if (record.getSeller().getId() != user.getId()) {
 			val.add(new Validation(getClazz().getSimpleName(), "Unauthorised", "Unauthorised"));
 			return getInvalidResult(val);
 		}
