@@ -1,6 +1,6 @@
 package org.pkfrc.core.utilities.enumerations;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public enum ETransactionalOperation {
 

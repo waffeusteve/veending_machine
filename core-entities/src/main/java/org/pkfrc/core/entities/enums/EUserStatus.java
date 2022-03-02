@@ -1,6 +1,6 @@
 package org.pkfrc.core.entities.enums;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public enum EUserStatus {
 	Active, Locked;

@@ -4,7 +4,7 @@ import org.pkfrc.core.entities.base.BaseEntity;
 
 import java.io.Serializable;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public interface EntityDTO<E extends BaseEntity<ID>, ID extends Serializable> extends  DtoToEntity<E>{
 

@@ -12,7 +12,7 @@ import org.pkfrc.core.persistence.tools.OrderContainer;
 import org.pkfrc.core.persistence.tools.RestrictionsContainer;
 
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public interface IBaseService<E extends BaseEntity<ID>, ID extends Serializable> {
  

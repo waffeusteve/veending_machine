@@ -8,7 +8,7 @@ import org.pkfrc.core.services.enums.EServiceDataType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 @NoArgsConstructor
 @Data

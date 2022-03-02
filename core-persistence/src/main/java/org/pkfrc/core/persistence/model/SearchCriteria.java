@@ -98,7 +98,7 @@ public class SearchCriteria {
 	 *            of the field
 	 * @return the list of criteria needed to find by the field
 	 *
-	 * @author Ulrich LELE
+	 * @author Steve Waffeu
 	 */
 	public static List<SearchCriteria> build(String key, Object value, Object value1, ESearchOperationType type,
 											 boolean applyAnd) {

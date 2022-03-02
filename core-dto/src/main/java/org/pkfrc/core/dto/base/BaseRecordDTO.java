@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 @NoArgsConstructor
 @AllArgsConstructor

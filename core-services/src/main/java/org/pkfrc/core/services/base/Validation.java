@@ -2,7 +2,7 @@ package org.pkfrc.core.services.base;
 
 import java.io.Serializable;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public class Validation implements Serializable {
 

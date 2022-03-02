@@ -5,13 +5,11 @@ import org.pkfrc.core.dto.base.DtoToEntity;
 import org.pkfrc.core.entities.enums.EUserType;
 import org.pkfrc.core.entities.security.User;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class CreateUserDTO implements DtoToEntity<User> {
 
     /**
@@ -29,4 +27,13 @@ public class CreateUserDTO implements DtoToEntity<User> {
         mapper.map(this, entity);
         return entity;
     }
+	public CreateUserDTO(Double deposit, String userName, String password, EUserType type) {
+		super();
+		this.deposit = deposit;
+		this.userName = userName;
+		this.password = password;
+		this.type = type;
+	}
+    
+    
 }

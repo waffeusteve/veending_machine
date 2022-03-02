@@ -24,6 +24,11 @@ public class BuyRequest implements Serializable{
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
+	public BuyRequest(Long productId, Integer quantity) {
+		super();
+		this.productId = productId;
+		this.quantity = quantity;
+	}
 	
 	
 

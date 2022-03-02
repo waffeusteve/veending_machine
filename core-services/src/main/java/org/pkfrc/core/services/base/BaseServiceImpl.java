@@ -38,7 +38,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public abstract class BaseServiceImpl<E extends BaseEntity<ID>, ID extends Serializable> implements IBaseService<E, ID> {
 

@@ -98,6 +98,11 @@ public class ProductWS extends BaseWS<Product, Long> {
             @RequestParam(value = "size", required = true) int size) {
         return super.findPage(criterias, page, size, ProductDTO.class);
     }
+    
+    @GetMapping(value = "/test")
+    public String test() {
+        return "Hello, World";
+    }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<BaseRecordDTO<ProductDTO>> deleteEntity(@PathVariable Long id, @RequestParam(value = "lang", required = false, defaultValue = defaultLang) String lang) {

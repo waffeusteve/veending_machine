@@ -5,7 +5,7 @@ import org.pkfrc.core.entities.base.BaseEntity;
 import java.io.Serializable;
 
 /**
- * @author Ulrich lele
+ * @author Steve Waffeu
  */
 public interface ParamEntityDTO<E extends BaseEntity<ID>, ID extends Serializable> extends EntityDTO<E, ID>{
 

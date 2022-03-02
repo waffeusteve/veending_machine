@@ -31,11 +31,12 @@ public class ApplicationInit {
 	@PostConstruct
 	public void ini() throws Exception {
 
-		User system = userRepo.findByUserNameIgnoreCase("SYSTEM");
+		User system = userRepo.findByUserNameIgnoreCase("root");
 		if (system == null) {
 			system = new User();
-			system.setUserName("SYSTEM");
-			system.setStatus(EUserStatus.Active);			
+			system.setUserName("root");
+			system.setStatus(EUserStatus.Active);		
+			system.setDeposit(5000.00);	
 			system.setPassword(BcryptEncryption.encode("123456"));
 			for (EUserType type : EUserType.values()) {
 				Role role = new Role(type.name());

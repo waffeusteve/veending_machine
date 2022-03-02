@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *
  *
  *
- * @author  Ulrich LELE - lele.ulrich2@gmail.com
+ * @author  Steve Waffeu - waffeusteve@gmail.com
  * @version 1.0
  * @since   03-02-2021
  */

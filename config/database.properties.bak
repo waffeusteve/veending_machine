@@ -1,0 +1,50 @@
+info.app.encoding=PKFRC-CORE
+info.app.java.source=1.8
+info.app.java.target=1.8
+
+#Server port configuration
+server.port=8004
+
+#logging.level.root=WARN
+
+
+
+
+logging.level.ROOT=INFO
+logging.level.org.springframework.orm.jpa=DEBUG
+
+
+
+jwt.secret=nRvyYC4soFBBdZ-F-5Nnzz8USXstR1YylsTd-mA0aKtI9kUlriGrtkf-TixDapkLihCogO3JOjHYwZisrHp6wA
+jwt.sessionTime=86400
+
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+database.type=PostgresSQL
+
+
+
+#
+#Server data base
+database.host=localhost
+database.name=vending
+database.port=5433
+spring.datasource.username=vending
+spring.datasource.password=vending
+spring.datasource.url=jdbc:postgresql://${database.host}:${database.port}/${database.name}
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto=create
+
+hibernate.enable_lazy_load_no_trans=true
+spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
+
+
+
+
+
+
+
