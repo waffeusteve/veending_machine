@@ -12,15 +12,15 @@
 	<artifactId>vending-entities</artifactId>
 	<name>vending-entities</name>
 	<dependencies>
-		<dependency>
-			<groupId>org.pkfrc.vending</groupId>
-			<artifactId>vending-utilities</artifactId>
-			<version>${vending.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.pkfrc.vending</groupId> -->
+<!-- 			<artifactId>vending-utilities</artifactId> -->
+<!-- 			<version>${vending.version}</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.pkfrc.core</groupId>
 			<artifactId>core-entities</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

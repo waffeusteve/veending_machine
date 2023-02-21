@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>org.pkfrc.core</groupId>
 			<artifactId>core-services</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
